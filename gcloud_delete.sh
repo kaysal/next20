@@ -38,6 +38,7 @@ gcloud_destroy() {
   gcloud -q compute instance-groups unmanaged delete ig-us --zone us-east4-b
   gcloud -q compute instance-groups unmanaged delete ig-eu --zone europe-west2-b
 
+  echo ""
   echo "${bold}${green}deleting instances...${reset}"
   gcloud -q compute instances delete probe-us --zone=us-central1-b
   gcloud -q compute instances delete db-eu --zone=europe-west2-c
@@ -45,6 +46,7 @@ gcloud_destroy() {
   gcloud -q compute instances delete web-eu --zone=europe-west2-b
   gcloud -q compute instances delete web-us --zone=us-east4-b
 
+  echo ""
   echo "${bold}${green}deleting firewall rules...${reset}"
   gcloud -q compute firewall-rules delete allow-ssh
   gcloud -q compute firewall-rules delete allow-rfc1918
@@ -57,6 +59,7 @@ gcloud_destroy() {
   gcloud -q compute networks subnets delete subnet2 --region europe-west2
   gcloud -q compute networks subnets delete subnet3 --region us-central1
 
+  echo ""
   echo "${bold}${green}deleting vpc...${reset}"
   gcloud -q compute networks delete vpc
 }
