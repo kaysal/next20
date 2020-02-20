@@ -10,13 +10,13 @@ bold=$(tput bold)
 reset=`tput sgr0`
 
 gcloud_deploy() {
-  echo "${green}${magenta}creating vpc...${reset}"
+  echo "${bold}${green}creating vpc...${reset}"
 
   gcloud -q compute networks create vpc \
   --subnet-mode custom
 
   echo ""
-  echo "${green}${magenta}creating subnets...${reset}"
+  echo "${bold}${green}creating subnets...${reset}"
 
   gcloud -q compute networks subnets create subnet1 \
   --network vpc \
@@ -33,7 +33,7 @@ gcloud_deploy() {
   --range 10.1.3.0/24 \
   --region us-central1
 
-  echo "${green}${magenta}creating firewall rules...${reset}"
+  echo "${bold}${green}creating firewall rules...${reset}"
 
   gcloud -q compute firewall-rules create allow-ssh \
   --network vpc \
@@ -59,7 +59,7 @@ gcloud_deploy() {
   --source-ranges 10.1.1.0/24
 
   echo ""
-  echo "${green}${magenta}creating web server instances...${reset}"
+  echo "${bold}${green}creating web server instances...${reset}"
 
   gcloud -q compute instances create web-us \
   --zone=us-east4-b \
@@ -124,7 +124,7 @@ gcloud_deploy() {
   crontab /tmp/crontab.txt'
 
   echo ""
-  echo "${green}${magenta}creating db server instances...${reset}"
+  echo "${bold}${green}creating db server instances...${reset}"
 
   gcloud -q compute instances create db-us \
   --zone=us-east4-c \
@@ -191,7 +191,7 @@ gcloud_deploy() {
   crontab /tmp/crontab.txt'
 
   echo ""
-  echo "${green}${magenta}creating instance groups and named ports...${reset}"
+  echo "${bold}${green}creating instance groups and named ports...${reset}"
 
   gcloud -q compute instance-groups unmanaged create ig-us \
    --zone us-east4-b
@@ -216,12 +216,12 @@ gcloud_deploy() {
   --zone europe-west2-b
 
   echo ""
-  echo "${green}${magenta}creating health check...${reset}"
+  echo "${bold}${green}creating health check...${reset}"
 
   gcloud -q compute health-checks create tcp my-tcp-health-check --port 110
 
   echo ""
-  echo "${green}${magenta}creating backend services...${reset}"
+  echo "${bold}${green}creating backend services...${reset}"
 
   gcloud -q compute backend-services create my-tcp-lb \
   --global \
@@ -231,7 +231,7 @@ gcloud_deploy() {
   --port-name tcp110
 
   echo ""
-  echo "${green}${magenta}adding instance groups to backend service...${reset}"
+  echo "${bold}${green}adding instance groups to backend service...${reset}"
 
   gcloud -q compute backend-services add-backend my-tcp-lb \
   --global \
@@ -248,21 +248,21 @@ gcloud_deploy() {
   --max-utilization 0.8
 
   echo ""
-  echo "${green}${magenta}creating tcp proxy...${reset}"
+  echo "${bold}${green}creating tcp proxy...${reset}"
 
   gcloud -q compute target-tcp-proxies create my-tcp-lb-target-proxy \
   --backend-service my-tcp-lb \
   --proxy-header NONE
 
   echo ""
-  echo "${green}${magenta}reserve forwarding rule address...${reset}"
+  echo "${bold}${green}reserving forwarding rule address...${reset}"
 
   gcloud -q compute addresses create tcp-lb-static-ipv4 \
   --ip-version=IPV4 \
   --global
 
   echo ""
-  echo "${green}${magenta}creating forwarding rule...${reset}"
+  echo "${bold}${green}creating forwarding rule...${reset}"
 
   export LB_STATIC_IPV4=`gcloud compute addresses describe tcp-lb-static-ipv4 \
   --format="value(address)" --global`
@@ -274,13 +274,13 @@ gcloud_deploy() {
   --ports 110
 
   echo ""
-  echo "${green}${magenta}creating project metadata to store tcp procy address...${reset}"
+  echo "${bold}${green}creating project metadata to store tcp proxy address...${reset}"
 
   gcloud -q compute project-info add-metadata \
   --metadata lb-vip=$LB_STATIC_IPV4
 
   echo ""
-  echo "${green}${magenta}creating a probe instance...${reset}"
+  echo "${bold}${green}creating a probe instance...${reset}"
 
   gcloud -q compute instances create probe-us \
   --zone=us-central1-b \
