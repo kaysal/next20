@@ -11,7 +11,7 @@ reset=`tput sgr0`
 
 echo "${bold}${magenta}creating vpc...${reset}"
 
-gcloud -q ompute networks create vpc \
+gcloud -q compute networks create vpc \
 --subnet-mode custom
 
 echo "${bold}${magenta}creating subnets...${reset}"
