@@ -1,0 +1,39 @@
+# Compiled files
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+terraform.tfvars
+vars.tfvars
+#*.json
+*backend*
+tfplan
+.tmp
+
+# Module directory
+.terraform/
+
+# Other files
+*credentials/
+plugins/
+*plugins/
+*.x
+*scrap*
+*reference*
+*artifact
+
+# Skaffold
+bin/
+pkg/
+.DS_Store
+*.pyc
+*.swp
+*~
+.vscode/
+.vs/
+.idea
+.skaffold-*.yaml
+.kubernetes-manifests-*/
+_run.*
+_dev.*
+_delete.*
+_env.txt
