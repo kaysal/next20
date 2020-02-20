@@ -10,6 +10,7 @@ bold=$(tput bold)
 reset=`tput sgr0`
 
 gcloud_deploy() {
+  echo ""
   echo "${bold}${green}creating vpc...${reset}"
 
   gcloud -q compute networks create vpc \
@@ -33,6 +34,7 @@ gcloud_deploy() {
   --range 10.1.3.0/24 \
   --region us-central1
 
+  echo ""
   echo "${bold}${green}creating firewall rules...${reset}"
 
   gcloud -q compute firewall-rules create allow-ssh \
