@@ -31,7 +31,7 @@ gcloud_destroy() {
 
   echo ""
   echo "${bold}${green}deleting health check...${reset}"
-  gcloud -q compute health-checks delete tcp my-tcp-health-check
+  gcloud -q compute health-checks delete my-tcp-health-check
 
   echo ""
   echo "${bold}${green}deleting instance groups and named ports...${reset}"
