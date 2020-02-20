@@ -65,6 +65,7 @@ gcloud_deploy() {
 
   gcloud -q compute instances create web-us \
   --zone=us-east4-b \
+  --machine-type=n1-standard-2\
   --tags=allow-hc \
   --image-family=debian-9 \
   --image-project=debian-cloud \
@@ -96,6 +97,7 @@ gcloud_deploy() {
 
   gcloud -q compute instances create web-eu \
   --zone=europe-west2-b \
+  --machine-type=n1-standard-2\
   --tags=allow-hc \
   --image-family=debian-9 \
   --image-project=debian-cloud \
@@ -130,6 +132,7 @@ gcloud_deploy() {
 
   gcloud -q compute instances create db-us \
   --zone=us-east4-c \
+  --machine-type=n1-standard-2\
   --tags=db-tier \
   --image-family=debian-9 \
   --image-project=debian-cloud \
@@ -162,6 +165,7 @@ gcloud_deploy() {
 
   gcloud -q compute instances create db-eu \
   --zone=europe-west2-c \
+  --machine-type=n1-standard-2\
   --tags=db-tier \
   --image-family=debian-9 \
   --image-project=debian-cloud \
@@ -286,6 +290,7 @@ gcloud_deploy() {
 
   gcloud -q compute instances create probe-us \
   --zone=us-central1-b \
+  --machine-type=n1-standard-2\
   --image-family=debian-9 \
   --image-project=debian-cloud \
   --subnet=subnet3 \
