@@ -92,7 +92,7 @@ gcloud_deploy() {
   done
   EOF
 
-  echo "*/5 * * * * /tmp/probez 2>&1 > /dev/null" > /tmp/crontab.txt
+  echo "*/5 * * * * /tmp/probez > /dev/null 2>&1" > /tmp/crontab.txt
   crontab /tmp/crontab.txt'
 
   gcloud -q compute instances create web-eu \
@@ -124,7 +124,7 @@ gcloud_deploy() {
   done
   EOF
 
-  echo "*/5 * * * * /tmp/probez 2>&1 > /dev/null" > /tmp/crontab.txt
+  echo "*/5 * * * * /tmp/probez > /dev/null 2>&1" > /tmp/crontab.txt
   crontab /tmp/crontab.txt'
 
   echo ""
@@ -160,7 +160,7 @@ gcloud_deploy() {
   done
   EOF
 
-  echo "*/5 * * * * /tmp/probez 2>&1 > /dev/null" > /tmp/crontab.txt
+  echo "*/5 * * * * /tmp/probez > /dev/null 2>&1" > /tmp/crontab.txt
   crontab /tmp/crontab.txt'
 
   gcloud -q compute instances create db-eu \
@@ -193,7 +193,7 @@ gcloud_deploy() {
   done
   EOF
 
-  echo "*/5 * * * * /tmp/probez 2>&1 > /dev/null" > /tmp/crontab.txt
+  echo "*/5 * * * * /tmp/probez > /dev/null 2>&1" > /tmp/crontab.txt
   crontab /tmp/crontab.txt'
 
   echo ""
@@ -314,7 +314,7 @@ gcloud_deploy() {
   done
   EOF
 
-  echo "*/5 * * * * /tmp/probez 2>&1 > /dev/null" > /tmp/crontab.txt
+  echo "*/5 * * * * /tmp/probez > /dev/null 2>&1" > /tmp/crontab.txt
   crontab /tmp/crontab.txt'
 }
 
