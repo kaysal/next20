@@ -3,9 +3,6 @@
 apt-get update
 apt-get install -y apache2-utils
 
-lb_vip="$(curl -H "Metadata-Flavor: Google" \
-http://169.254.169.254/computeMetadata/v1/project/attributes/lb-vip)"
-
 touch /tmp/probez
 chmod a+x /tmp/probez
 cat <<EOF > /tmp/probez
