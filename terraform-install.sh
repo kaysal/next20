@@ -58,7 +58,7 @@ function terraform_install() {
   cat - << EOF
 
 INFO: Run the following to reload your PATH with terraform:
-  source ~/.profile
+  source ~/.bashrc
 
 EOF
 }
