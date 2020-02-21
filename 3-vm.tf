@@ -103,9 +103,7 @@ resource "google_compute_instance" "db_us" {
 # europe-west2
 
 locals {
-  db_eu_init = templatefile("scripts/db.sh.tpl", {
-    remote_db_ip = "10.1.1.100:3306"
-  })
+  db_eu_init = templatefile("scripts/default.sh.tpl", {})
 }
 
 resource "google_compute_instance" "db_eu" {
