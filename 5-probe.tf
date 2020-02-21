@@ -21,6 +21,7 @@ resource "google_compute_instance" "probe_us" {
   network_interface {
     subnetwork = google_compute_subnetwork.subnet3.self_link
     network_ip = "10.1.3.100"
+    access_config {}
   }
 
   service_account {
