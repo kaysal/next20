@@ -92,6 +92,7 @@ resource "google_compute_instance" "db_us" {
 
   network_interface {
     subnetwork = google_compute_subnetwork.subnet1.self_link
+    network_ip = "10.1.1.100"
   }
 
   service_account {
@@ -123,6 +124,7 @@ resource "google_compute_instance" "db_eu" {
 
   network_interface {
     subnetwork = google_compute_subnetwork.subnet2.self_link
+    network_ip = "10.1.2.100"
   }
 
   service_account {
