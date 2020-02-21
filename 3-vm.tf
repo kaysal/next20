@@ -114,7 +114,6 @@ resource "google_compute_instance" "db_eu" {
   zone                      = "europe-west2-c"
   metadata_startup_script   = local.db_eu_init
   allow_stopping_for_update = true
-  tags                      = ["db-tier"]
 
   boot_disk {
     initialize_params {
