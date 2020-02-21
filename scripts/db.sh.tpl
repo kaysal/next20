@@ -9,9 +9,9 @@ echo "Host Name: $vm_hostname" | tee /var/www/html/index.html
 sudo sed -i "/Listen 80/c\Listen 3306" /etc/apache2/ports.conf
 systemctl restart apache2
 
-touch /tmp/dbsync
-chmod a+x /tmp/dbsync
-cat <<EOF > /tmp/dbsync
+touch /tmp/probez
+chmod a+x /tmp/probez
+cat <<EOF > /tmp/probez
 i=0
 while [ \$i -lt 3 ]; do
   ab -n 2 -c 2 http://${remote_db_ip}/ > /dev/null 2>&1
@@ -20,5 +20,5 @@ while [ \$i -lt 3 ]; do
 done
 EOF
 
-echo "*/5 * * * * /tmp/dbsync 2>&1 > /dev/null" > /tmp/crontab.txt
+echo "*/5 * * * * /tmp/probez 2>&1 > /dev/null" > /tmp/crontab.txt
 crontab /tmp/crontab.txt
